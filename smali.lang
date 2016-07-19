@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+ Dalvik bytecode/Smali syntax highlighting for GtkSourceView:
+ This file is an language spec for GtkSourceView.
+
+ Author: Rumyana Rumenova <rumyanar@criticalblue.com>
+ Copyright (C) 2016 Critical Blue <https://criticalblue.com/>
+
+ GtkSourceView is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+
+ GtkSourceView is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+
+<language id="smali" _name="smali" version="2.0" _section="Source">
+	<metadata>
+		<property name="globs">*.smali</property>
+		<property name="line-comment-start">#</property>
+	</metadata>
+
+	<styles>
+		<style id="comment" _name="Comment" map-to="def:comment" />
+		<style id="keyword" _name="Keyword" map-to="def:keyword" />
+		<style id="type" _name="Data Type" map-to="def:type" />
+
+		<style id="declaration" _name="Declaration" map-to="def:type" />
+		<style id="class-descriptor" _name="Storage Class" map-to="def:type" />
+		<style id="scope-declaration" _name="Scope Declaration" map-to="def:type" />
+		<style id="label" _name="Label" map-to="def:string" />
+
+		<style id="escaped-character" _name="Escaped Character" map-to="def:special-char" />
+		<style id="string" _name="String" map-to="def:string" />
+		<style id="number" _name="Number" map-to="def:decimal" />
+		<style id="boolean" _name="Boolean value" map-to="def:boolean" />
+		<style id="char" _name="Character" map-to="def:character" />
+		<style id="null-value" _name="Null Value" map-to="def:special-constant" />
+	</styles>
+
+	<definitions>
+
+		<context id="flow" style-ref="keyword">
+			<!-- branching -->
+			<keyword>if-eqz</keyword>
+			<keyword>if-eq</keyword>
+			<keyword>if-nez</keyword>
+			<keyword>if-ne</keyword>
+			<keyword>if-ltz</keyword>
+			<keyword>if-lt</keyword>
+			<keyword>if-lez</keyword>
+			<keyword>if-le</keyword>
+			<keyword>if-gtz</keyword>
+			<keyword>if-gt</keyword>
+			<keyword>if-gez</keyword>
+			<keyword>if-ge</keyword>
+			<keyword>if</keyword>
+			<keyword>cmpl-</keyword>
+			<keyword>cmpg-</keyword>
+			<keyword>cmp-</keyword>
+
+			<keyword>goto</keyword>
+			<keyword>packed-switch</keyword>
+			<keyword>sparse-switch</keyword>
+
+			<!-- exceptions -->
+			<keyword>try</keyword>
+			<keyword>catch</keyword>
+			<keyword>catchall</keyword>
+			<keyword>throw</keyword>
+
+			<!-- method invocation -->
+			<keyword>invoke-direct-</keyword>
+			<keyword>invoke-direct</keyword>
+			<keyword>invoke-interface-</keyword>
+			<keyword>invoke-interface</keyword>
+			<keyword>invoke-static-</keyword>
+			<keyword>invoke-static</keyword>
+			<keyword>invoke-super-</keyword>
+			<keyword>invoke-super</keyword>
+			<keyword>invoke-virtual-</keyword>
+			<keyword>invoke-virtual</keyword>
+
+			<keyword>;-></keyword>
+
+			<keyword>return-</keyword>
+			<keyword>return</keyword>
+
+		</context>
+
+		<context id="operation" style-ref="keyword">
+
+			<!-- arithmetic -->
+			<keyword>add-</keyword>
+			<keyword>sub-</keyword>
+			<keyword>rsub-</keyword>
+			<keyword>mul-</keyword>
+			<keyword>div-</keyword>
+			<keyword>rem-</keyword>
+			<!-- boolean -->
+			<keyword>and-</keyword>
+			<keyword>or-</keyword>
+			<keyword>xor-</keyword>
+			<keyword>neg-</keyword>
+			<keyword>not-</keyword>
+			<!-- shifts -->
+			<keyword>shl-</keyword>
+			<keyword>shr-</keyword>
+			<keyword>ushr-</keyword>
+			<!-- type transforms -->
+			<keyword>-to-</keyword>
+
+
+			<!-- extras -->
+			<keyword>annotation</keyword>
+			<keyword>subannotation</keyword>
+
+			<keyword>array-length</keyword>
+			<keyword>instance-of</keyword>
+			<keyword>check-cast</keyword>
+			<keyword>monitor-enter</keyword>
+			<keyword>monitor-exit</keyword>
+
+		</context>
+
+		<context id="memory" style-ref="keyword">
+			<keyword>filled-new-array</keyword>
+			<keyword>filled-array-data</keyword>
+			<keyword>new-array</keyword>
+			<keyword>new-instance</keyword>
+			<keyword>new</keyword>
+			<keyword>super</keyword>
+			<keyword>this</keyword>
+
+			<!-- instance -->
+			<keyword>iget-</keyword>
+			<keyword>iget</keyword>
+			<keyword>iput-</keyword>
+			<keyword>iput</keyword>
+			<!-- array -->
+			<keyword>aget-</keyword>
+			<keyword>aget</keyword>
+			<keyword>aput-</keyword>
+			<keyword>aput</keyword>
+			<!-- static field -->
+			<keyword>sget-</keyword>
+			<keyword>sget</keyword>
+
+			<keyword>move-result-</keyword>
+			<keyword>move-result</keyword>
+			<keyword>move-</keyword>
+			<keyword>move</keyword>
+
+			<keyword>nop</keyword>
+
+		</context>
+
+		<context id="type" style-ref="type">
+			<keyword>boolean</keyword>
+			<keyword>byte</keyword>
+			<keyword>char</keyword>
+			<keyword>double</keyword>
+			<keyword>float</keyword>
+			<keyword>int</keyword>
+			<keyword>long</keyword>
+			<keyword>short</keyword>
+			<keyword>enum</keyword>
+
+			<keyword>V</keyword>
+			<keyword>I</keyword>
+			<keyword>Z</keyword>
+			<keyword>B</keyword>
+			<keyword>F</keyword>
+			<keyword>D</keyword>
+			<keyword>S</keyword>
+			<keyword>J</keyword>
+			<keyword>C</keyword>
+
+			<keyword>Ljava/lang/String</keyword>
+			<keyword>Ljava/lang/Integer</keyword>
+			<keyword>Ljava/lang/Double</keyword>
+			<keyword>Ljava/lang/Object</keyword>
+
+			<keyword>object</keyword>
+			<keyword>string</keyword>
+			<keyword>void</keyword>
+			<keyword>exception</keyword>
+
+			<keyword>const</keyword>
+			<keyword>lit8</keyword>
+
+			<keyword>quick</keyword>
+			<keyword>empty</keyword>
+
+		</context>
+
+		<context id="type-extended" style-ref="type">
+			<match extended="true">
+				((\b\[(I|Z|B|F|D|S|J|C)(I|Z|B|F|D|S|J|C)+(L)?)|
+				(\b(I|Z|B|F|D|S|J|C)(I|Z|B|F|D|S|J|C)+(L)?)|
+				(\b\[L)|(\bL))
+			</match>
+		</context>
+
+		<context id="type-register" style-ref="type">
+			<!-- register size / number -->
+			<keyword>wide</keyword>
+			<keyword>/range</keyword>
+			<keyword>/from16</keyword>
+			<keyword>/4</keyword>
+			<keyword>/16</keyword>
+			<keyword>/32</keyword>
+			<keyword>/high16</keyword>
+			<keyword>/jumbo</keyword>
+
+		</context>
+
+		<context id="declaration" style-ref="keyword">
+			<keyword>source</keyword>
+			<keyword>super</keyword>
+
+			<keyword>class</keyword>
+			<keyword>const-class</keyword>
+
+			<keyword>field</keyword>
+			<keyword>local</keyword>
+			<keyword>param</keyword>
+
+			<keyword>method</keyword>
+
+			<keyword>end</keyword>
+			<keyword>restart</keyword>
+		</context>
+
+		<context id="class-descriptor" style-ref="class-descriptor">
+
+			<keyword>constructor</keyword>
+			<keyword>native</keyword>
+
+			<keyword>abstract</keyword>
+			<keyword>interface</keyword>
+
+			<keyword>synthetic</keyword>
+
+			<keyword>final</keyword>
+			<keyword>static</keyword>
+
+			<keyword>transient</keyword>
+			<keyword>volatile</keyword>
+
+			<keyword>strictfp</keyword>
+
+			<keyword>extends</keyword>
+			<keyword>implements</keyword>
+
+		</context>
+
+		<context id="scope-declaration" style-ref="scope-declaration">
+			<keyword>private</keyword>
+			<keyword>protected</keyword>
+			<keyword>public</keyword>
+		</context>
+
+		<context id="label" style-ref="label">
+			<keyword>line</keyword>
+			<keyword>locals</keyword>
+			<keyword>registers</keyword>
+			<keyword>prologue</keyword>
+			<keyword>epilogue</keyword>
+		</context>
+
+		<context id="label-extended" style-ref="label">
+			<match extended="true">
+				(\b((goto)|(cond)|(try(_start|_end)?)|(catch))_[0-9]*[a-z]*)
+			</match>
+		</context>
+
+		<define-regex id="escaped-character" extended="true">
+			\\( #
+			leading backslash
+			[\\\"\'nrbtf] | # escaped character
+			[0-9]{1,3} | #
+			latin encoded char
+			u[0-9]{1,4} # unicode char
+			)
+		</define-regex>
+
+		<context id="string" style-ref="string" end-at-line-end="true"
+			class="string" class-disabled="no-spell-check">
+			<start>"</start>
+			<end>"</end>
+			<include>
+				<context id="escaped-character" style-ref="escaped-character">
+					<match>\%{escaped-character}</match>
+				</context>
+			</include>
+		</context>
+
+		<context id="numeric" style-ref="number">
+			<match extended="true">
+				(\b([0-9]+|0[xX][0-9a-fA-F]+)[Ll]?\b|
+				\b(([0-9]+[Ee][-]?[0-9]+|
+				([0-9]*\.[0-9]+|[0-9]+\.)([Ee][-]?[0-9]+)?)[fFdD]?|
+				[0-9]+[FfDd]))
+			</match>
+		</context>
+
+		<context id="boolean" style-ref="boolean">
+			<keyword>false</keyword>
+			<keyword>true</keyword>
+		</context>
+
+		<context id="char" style-ref="char">
+			<match>'(\%{escaped-character}|.)'</match>
+		</context>
+
+		<context id="null-value" style-ref="null-value">
+			<keyword>null</keyword>
+		</context>
+
+		<context id="smali" class="no-spell-check">
+			<include>
+				<context ref="def:shell-like-comment" />
+				<context ref="flow" />
+				<context ref="operation" />
+				<context ref="memory" />
+
+				<context ref="type" />
+				<context ref="type-extended" />
+				<context ref="type-register" />
+
+				<context ref="declaration" />
+				<context ref="class-descriptor" />
+				<context ref="scope-declaration" />
+
+				<context ref="label" />
+				<context ref="label-extended" />
+
+				<context ref="string" />
+				<context ref="numeric" />
+				<context ref="boolean" />
+				<context ref="char" />
+				<context ref="null-value" />			
+			</include>
+		</context>
+
+	</definitions>
+</language>
